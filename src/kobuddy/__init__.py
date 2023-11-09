@@ -208,6 +208,11 @@ class Highlight(Event):
     #     return self.w.title
 
     @property
+    def start_container_path(self):
+        return self.row['StartContainerPath']
+
+
+    @property
     def _key(self):
         return (self.dt, self.text, self.annotation)
 
@@ -1038,6 +1043,7 @@ def print_annotations() -> None:
     for i in get_highlights():
         h = f"""
 {_fmt_dt(i.dt)} {i._book}
+{i.start_container_path}
     {i.text}
         {i.annotation}
 """.strip('\n')
